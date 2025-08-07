@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Resume.Application.DTOs.SiteSide.Home_Index
+{
+   public class HomeIndexModelDTO
+    {
+        public List<Resume.Domain.Entities.Education.Education> Educations { get; set; }
+        public List<Resume.Domain.Entities.Expeience.Experience> Experiences { get; set; }
+        public List<Resume.Domain.Entities.MySkills.MySkills> MySkills { get; set; }
+        
+    }
+}
