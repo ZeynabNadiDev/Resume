@@ -10,5 +10,6 @@ namespace Resume.Domain.RepositoryInterface
     public interface IContactUsRepository
     {
        Task AddContactUsToTheDataBase(ContactUs contactUs);
+       Task AddLocationToTheDataBase(ContactUsLocation location);
     }
 }
