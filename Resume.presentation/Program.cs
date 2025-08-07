@@ -15,6 +15,8 @@ namespace Resume.presentation
             builder.Services.AddScoped<IEducationRepository, EducationRepository>();
             builder.Services.AddScoped<IExperienceRepository, ExperienceRepository>();
             builder.Services.AddScoped<IMySkillsRepository, MySkillsRepository>();
+            builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
+         
 
             builder.Services.AddDbContext<ResumeDbContext>();
             var app = builder.Build();
