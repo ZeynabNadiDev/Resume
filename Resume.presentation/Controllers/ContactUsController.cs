@@ -20,17 +20,10 @@ namespace Resume.presentation.Controllers
         }
 
         [HttpPost]
-        public async Task <IActionResult> ContactUs(string fullName,string email,string message)
+        public async Task <IActionResult> ContactUs(ContactUs contact)
         {
-            ContactUs model = new ContactUs()
-            {
-                FullName = fullName,
-                Email = email,
-                Message = message,
-                CreateDate = DateTime.Now,
-                IsSeenByAdmin=false
-            };
-            await _contactUsRepository.AddContactUsToTheDataBase(model);
+   
+            await _contactUsRepository.AddContactUsToTheDataBase(contact);
             return View();
         }
 
