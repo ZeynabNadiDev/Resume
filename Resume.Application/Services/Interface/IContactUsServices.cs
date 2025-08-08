@@ -1,5 +1,4 @@
-﻿using Resume.Domain.Entities.Education;
-using Resume.Domain.Entities.Expeience;
+﻿using Resume.Application.DTOs.SiteSide.ContactUs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Resume.Application.Services.Interface
 {
-    public interface IEducationService
+    public interface IContactUsServices
     {
-        Task<List<Education>> GetListOfEducation();
+        Task AddNewContactUsMessage(ContactUsDTO contactUsDTO);
     }
 }

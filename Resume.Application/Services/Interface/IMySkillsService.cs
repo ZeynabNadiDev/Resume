@@ -1,5 +1,5 @@
-﻿using Resume.Domain.Entities.Education;
-using Resume.Domain.Entities.Expeience;
+﻿using Resume.Application.DTOs.SiteSide.Home_Index;
+using Resume.Domain.Entities.MySkills;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Resume.Application.Services.Interface
 {
-    public interface IEducationService
+    public interface IMySkillsService
     {
-        Task<List<Education>> GetListOfEducation();
+        Task<List<MySkills>> GetListOfMySkills();
     }
 }

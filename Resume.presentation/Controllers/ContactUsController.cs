@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.DTOs.SiteSide.ContactUs;
+using Resume.Application.Services.Interface;
 using Resume.Domain.Entities.ContacUs;
 using Resume.Domain.RepositoryInterface;
 using Resume.Infrastructure.Repository;
@@ -8,10 +9,10 @@ namespace Resume.presentation.Controllers
 {
     public class ContactUsController : Controller
     {
-        private readonly IContactUsRepository _contactUsRepository;
-        public ContactUsController(IContactUsRepository contactUsRepository)
+    private readonly IContactUsServices _contactUsServices;
+        public ContactUsController(IContactUsServices contactUsServices)
         {
-            _contactUsRepository = contactUsRepository;
+            _contactUsServices = contactUsServices;
         }
 
 
@@ -20,23 +21,14 @@ namespace Resume.presentation.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost,ValidateAntiForgeryToken]
         public async Task <IActionResult> ContactUs(ContactUsDTO contactUsDTO)
         {
-            ContactUs contact = new ContactUs()
+            if (ModelState.IsValid)
             {
-                FullName = contactUsDTO.FullName,
-                Email = contactUsDTO.Email,
-                Message = contactUsDTO.Message
-
-            };
-            ContactUsLocation location = new ContactUsLocation()
-            {
-                Address = contactUsDTO.Address
-            };
-   
-            await _contactUsRepository.AddContactUsToTheDataBase(contact);
-            await _contactUsRepository.AddLocationToTheDataBase(location);
+                await _contactUsServices.AddNewContactUsMessage(contactUsDTO);
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
