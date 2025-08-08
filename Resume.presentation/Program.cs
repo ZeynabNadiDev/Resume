@@ -29,6 +29,13 @@ namespace Resume.presentation
 
             #region Services
             builder.Services.AddScoped<IContactUsServices,ContactUsServices>();
+            builder.Services.AddScoped<IDashbordService, DashbordService>();
+            builder.Services.AddScoped<IEducationService, EducationService>();
+            builder.Services.AddScoped<IExperienceService, ExperienceService>();
+            builder.Services.AddScoped<IMySkillsService, MySkillsService>();
+
+
+
             #endregion
 
             var app = builder.Build();
@@ -47,6 +54,10 @@ namespace Resume.presentation
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "area",
+                pattern: "{area=exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

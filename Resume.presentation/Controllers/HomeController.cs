@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Resume.Domain.Entities.Education;
 using Resume.Infrastructure;
-using Resume.presentation.Models;
+
 using Resume.Domain.Entities.Expeience;
 using Resume.Domain.Entities.MySkills;
 using Resume.Application.DTOs.SiteSide.Home_Index;
